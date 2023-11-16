@@ -9,10 +9,27 @@
 //******************************************************************************
 
 #include <iostream>
+#include <ifstream>
 
 using namespace std;
 
 int main () {
+  const string STRING_FILE_NAME = "strings.txt";
+  
+  ifstream inFile;
+  string aString;
+
+  inFile.open (STRING_FILE_NAME);
+  if (inFile.fail ()) {
+    cout << "Error Opening File" << endl;
+    exit (EXIT_FAILURE);
+  }
+
+  while (inFile >> aString) {
+    cout << aString << endl;
+  }
+
+  inFile.close ();
 
   return EXIT_SUCCESS;
 }
