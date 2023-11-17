@@ -1,23 +1,27 @@
 //******************************************************************************
 // File name:   main.cpp
 // Author:      CS Faculty
-// Date:        8/22/2023
+// Date:        11/17/23
 // Class:       CS150-xx (xx is your section number)
-// Assignment:  Hello World
-// Purpose:     Display the message Hello World to the screen
-// Hours:       0.25
+// Assignment:  In class coding of C-strings
+// Purpose:     Working with strings, files, and functions
+// Hours:       
 //******************************************************************************
 
 #include <iostream>
-#include <ifstream>
+#include <fstream>
+#include <cstring>
 
 using namespace std;
 
+bool isEqual (const char word1[], const char word2[]);
+
 int main () {
-  const string STRING_FILE_NAME = "strings.txt";
+  const string STRING_FILE_NAME = "data/dictionary.txt";
+  const int MAX_STRING_SIZE = 32;
   
   ifstream inFile;
-  string aString;
+  char aDictionaryWord[MAX_STRING_SIZE], aWord[MAX_STRING_SIZE];
 
   inFile.open (STRING_FILE_NAME);
   if (inFile.fail ()) {
@@ -25,11 +29,20 @@ int main () {
     exit (EXIT_FAILURE);
   }
 
-  while (inFile >> aString) {
-    cout << aString << endl;
+  cout << "Enter a word: ";
+  cin >> aWord;
+
+  while (inFile >> aDictionaryWord) {
+    if (isEqual (aWord, aDictionaryWord)) {
+      cout << aWord << " is a dictionary word" << endl;
+    }
   }
 
   inFile.close ();
 
   return EXIT_SUCCESS;
+}
+
+bool isEqual (const char word1[], const char word2[]) {
+  return false;
 }
